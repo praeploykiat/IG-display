@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ส่ง IG ขึ้นจอ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>แจกวาร์ปขึ้นจอ!</h1>
+  <form id="submitForm">
+    <input type="text" name="instagram" placeholder="IG username" required>
+    <input type="text" name="quote" placeholder="caption">
+    <label for="image">แปะรูป</label>
+    <input type="file" name="image" id="image" accept="image/*">
+    <button type="submit">send</button>
+  </form>
+  <script>
+    document.getElementById("submitForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      await fetch("/api/submit", { method: "POST", body: formData });
+      alert("ส่งข้อมูลสำเร็จ!");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

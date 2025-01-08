@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จอโปรเจคเตอร์</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="display"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const display = document.getElementById("display");
+    const socket = io();
+
+    async function loadQueue() {
+      const res = await fetch("/api/queue");
+      const queue = await res.json();
+
+      if (queue.length > 0) {
+        const entry = queue[0]; // Show the first entry
+        display.innerHTML = `
+          <h1>@${entry.instagram}</h1>
+          <p>${entry.quote}</p>
+          ${entry.imageUrl ? `<img src="${entry.imageUrl}" width="300">` : ""}
+        `;
+
+        setTimeout(async () => {
+          await fetch(`/api/queue/${entry._id}`, { method: "DELETE" }); // Remove displayed entry
+          loadQueue();
+        }, 60000);
+      } else {
+        display.innerHTML = "<h1>รอการส่งข้อมูล...</h1>";
+      }
+    }
+
+    socket.on("updateQueue", loadQueue);
+    loadQueue();
+  </script>
+</body>
+</html>
