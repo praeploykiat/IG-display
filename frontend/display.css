@@ -1,8 +1,9 @@
 /* General body styling */
 body {
-    font-family: 'IBM Plex Sans Thai', Arial, sans-serif;
-    margin: 50px;
-    background-color: #f0f0f0;
+    font-family: 'Manrope', Arial, sans-serif;
+    margin: 0px;
+    background-color: #393043; 
+    color: #fefefe;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,15 +42,24 @@ body {
   .text-content h1 {
     margin: 0;
     font-size: 3rem;
-    color: #333;
+    color: #faf2db;
   }
   
   /* Quote styling */
   .text-content p {
     font-size: 2rem;
-    color: #666;
+    color: #fefefe;
   }
   
+    /* Use Thai font for Thai text */
+  .text-content p:lang(th) {
+    font-family: 'IBM Plex Sans Thai', Arial, sans-serif;
+  }
+
+    /* Use Manrope for English text */
+  .text-content p:lang(en) {
+    font-family: 'Manrope', Arial, sans-serif;
+  }
   /* Image container styling */
   .image-content {
     width: 50%;
@@ -62,5 +72,8 @@ body {
     max-width: 800px;  /* Limit the maximum width to 800px */
     height: auto;  /* Maintain the aspect ratio */
     border-radius: 8px;  /* Optional: Rounded corners */
+  }
+  .text-content h1 i {
+    margin-right: 10px; /* Adjust this value for more/less space */
   }
   

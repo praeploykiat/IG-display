@@ -2,7 +2,7 @@ body {
   font-family: 'Manrope', Arial, sans-serif;
   text-align: center;
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: #393043;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
@@ -16,8 +16,8 @@ body {
   width: 90%; /* Set a specific width instead of full width */
   max-width: 450px; /* Prevent it from being too wide */
   padding: 0px; /* Add some spacing inside */
-  border-radius: 15px; /* Slightly rounded corners */
-  background-color: #d8dcdb;
+  border-radius: 30px; /* Slightly rounded corners */
+  background-color: #eeeefe;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow for a floating effect */
 }
 
@@ -30,7 +30,7 @@ input, button, textarea {
   padding: 10px 10px;
   border: 1px solid #ccc;
   border-radius: 30px;
-  background-color: #ffffff;
+  background-color: #c2c2da;
 }
 
 textarea {
@@ -42,11 +42,36 @@ textarea {
 button[type="submit"] {
   width: 20%;
   max-width: 100px;
-  color: white;
-  background-color: #acb0cc;
+  color: black;
+  background-color: #afdfd3;
 }
 
 button[type="submit"]:hover {
-  background-color: #5c63a4;
-  transform: scale(1.1);
+  background-color: #ffd2e1;
+  transform: scale(1.2);
+}
+/* Modal styling: hidden by default */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: -100px; /* Position it 100px above the container */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 400px;
+  text-align: center;
+  border-radius: 8px;
 }

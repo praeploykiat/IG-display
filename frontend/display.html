@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Display page</title>
   <link rel="stylesheet" href="display.css">
+  <!-- Add Font Awesome for Instagram icon -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <div id="display" class="display-container"></div>
@@ -22,20 +24,20 @@
         display.innerHTML = `
           <div class="content-container">
             <div class="text-content">
-              <h1>@${entry.instagram}</h1>
+              <h1><i class="fab fa-instagram"></i>${entry.instagram}</h1> <!-- Instagram icon here -->
               <p>${entry.quote}</p>
             </div>
             ${entry.imageUrl ? `<div class="image-content"><img src="${entry.imageUrl}" alt="Image"></div>` : ""}
           </div>
         `;
         
-        //set duration
+        // Set duration
         setTimeout(async () => {
           await fetch(`/api/queue/${entry._id}`, { method: "DELETE" }); // Remove displayed entry
           loadQueue();
-        }, 10000); //ms
+        }, 10000); // ms
       } else {
-        display.innerHTML = "<h1>ว่าง รอคนส่ง</h1>";
+        display.innerHTML = "<h1>Send your IG in!</h1>";
       }
     }
 
