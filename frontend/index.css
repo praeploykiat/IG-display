@@ -1,0 +1,42 @@
+body {
+    font-family: 'IBM Plex Sans Thai', Arial, sans-serif; /* Use IBM Plex Sans Thai */
+    text-align: center;
+    margin: 50px;
+  }
+  
+  input, button {
+    width: 80%;  /* Set width to 80% of its container */
+    max-width: 400px;  /* Limit the width to 400px */
+    font-family: 'IBM Plex Sans Thai', Arial, sans-serif; /* Use IBM Plex Sans Thai */
+    display: block;
+    margin: 10px auto;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+  }
+
+  textarea {
+    width: 80%;  /* Set width to 80% of its container */
+    max-width: 400px;  /* Limit the width to 400px */
+    font-family: 'IBM Plex Sans Thai', Arial, sans-serif; /* Use IBM Plex Sans Thai */
+    display: block;
+    margin: 10px auto;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    resize: vertical;  /* Allow resizing only vertically */
+  }
+
+  button[type="submit"] {
+    width: 10%;
+    color: white;  /* White text color */
+    background-color: #d4949d;  /* Change border color on focus */
+  }
+
+  button[type="submit"]:hover {
+    background-color: #5c63a4;  /* Darker blue on hover */
+  }
+
+  
+  
+  

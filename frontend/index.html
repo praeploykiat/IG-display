@@ -3,25 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ส่ง IG ขึ้นจอ</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Submit Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <h1>แจกวาร์ปขึ้นจอ!</h1>
   <form id="submitForm">
     <input type="text" name="instagram" placeholder="IG username" required>
-    <input type="text" name="quote" placeholder="caption">
+    <textarea name="quote" placeholder="caption" rows="4" cols="50"></textarea> <!-- Multiline field for caption -->
     <label for="image">แปะรูป</label>
     <input type="file" name="image" id="image" accept="image/*">
-    <button type="submit">send</button>
+    <button type="submit">Submit</button>
   </form>
+
   <script>
+    // Make sure that the button can submit the form
     document.getElementById("submitForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
+      e.preventDefault();  // Prevent default form submission
       const formData = new FormData(e.target);
-      await fetch("/api/submit", { method: "POST", body: formData });
-      alert("ส่งข้อมูลสำเร็จ!");
-      e.target.reset();
+
+      // Make sure that the form data is being submitted
+      const response = await fetch("/api/submit", { method: "POST", body: formData });
+
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        e.target.reset();  // Reset the form after submission
+      } else {
+        alert("Form submission failed. Please try again.");
+      }
     });
   </script>
 </body>

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>จอโปรเจคเตอร์</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>display page</title>
+  <link rel="stylesheet" href="display.css">
 </head>
 <body>
-  <div id="display"></div>
+  <div id="display" class="display-container"></div>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const display = document.getElementById("display");
@@ -20,17 +20,22 @@
       if (queue.length > 0) {
         const entry = queue[0]; // Show the first entry
         display.innerHTML = `
-          <h1>@${entry.instagram}</h1>
-          <p>${entry.quote}</p>
-          ${entry.imageUrl ? `<img src="${entry.imageUrl}" width="300">` : ""}
+          <div class="content-container">
+            <div class="text-content">
+              <h1>@${entry.instagram}</h1>
+              <p>${entry.quote}</p>
+            </div>
+            ${entry.imageUrl ? `<div class="image-content"><img src="${entry.imageUrl}" alt="Image"></div>` : ""}
+          </div>
         `;
-
+        
+        //set duration
         setTimeout(async () => {
           await fetch(`/api/queue/${entry._id}`, { method: "DELETE" }); // Remove displayed entry
           loadQueue();
-        }, 60000);
+        }, 10000); //ms
       } else {
-        display.innerHTML = "<h1>รอการส่งข้อมูล...</h1>";
+        display.innerHTML = "<h1>ว่าง รอคนส่ง</h1>";
       }
     }
 

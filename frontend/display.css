@@ -1,0 +1,60 @@
+/* General body styling */
+body {
+    font-family: 'IBM Plex Sans Thai', Arial, sans-serif;
+    margin: 50px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container for the whole display page */
+  .display-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Flexbox layout for the content */
+  .content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Text content (Instagram username and quote) */
+  .text-content {
+    flex: 1;
+    text-align: left;
+  }
+  
+  /* Instagram username styling */
+  .text-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  /* Quote styling */
+  .text-content p {
+    font-size: 1.5rem;
+    color: #666;
+  }
+  
+  /* Image container styling */
+  .image-content {
+    width: 50%;
+    flex-shrink: 0;
+  }
+  
+  /* Image styling */
+  .image-content img {
+    width: 100%;   /* Image width will be 100% of the container width */
+    max-width: 800px;  /* Limit the maximum width to 800px */
+    height: auto;  /* Maintain the aspect ratio */
+    border-radius: 8px;  /* Optional: Rounded corners */
+  }
+  

@@ -11,17 +11,20 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// Load environment variables
+require('dotenv').config({ path: './.env' }); // Ensure .env is loaded correctly
+const dbPassword = process.env.DB_PASSWORD;
+
 // Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/ig_queue", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(`mongodb+srv://praeploy05:${dbPassword}@ig-display.mxwde.mongodb.net/?retryWrites=true&w=majority&appName=IG-Display`)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.error("Failed to connect to MongoDB Atlas", err));
 
 app.use(cors());
 app.use(express.json());
 
-// Serve Static Files
-app.use(express.static(path.join(__dirname, "../frontend"))); // Updated
+// Serve Static Files (Frontend)
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Serve Uploaded Images
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
@@ -63,4 +66,6 @@ io.on("connection", (socket) => {
   console.log("Client connected");
 });
 
-server.listen(3000, () => console.log("Server running on http://localhost:3000"));
+// Start server
+const port = process.env.PORT || 3000;  // Default port 3000
+server.listen(port, () => console.log(`Server running on http://localhost:${port}`));
