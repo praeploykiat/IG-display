@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <h1>Share Your IG on Screen!</h1>
-  <form id="submitForm">
-    <input type="text" name="instagram" placeholder="IG username" required>
-    <textarea name="quote" placeholder="caption" rows="4" cols="50"></textarea> <!-- Multiline field for caption -->
-    <label for="image">Attach your image</label>
-    <input type="file" name="image" id="image" accept="image/*">
-    <button type="submit">Submit</button>
-  </form>
+  <div class="container">
+    <h1>Share Your IG on Screen!</h1>
+    <form id="submitForm">
+      <input type="text" name="instagram" placeholder="IG username" required>
+      <textarea name="quote" placeholder="caption" rows="4" cols="50" maxlength="50"></textarea>
+      <label for="image">Attach your image</label>
+      <input type="file" name="image" id="image" accept="image/*">
+      <button type="submit">Submit</button>
+    </form>
 
   <script>
     // Make sure that the button can submit the form
@@ -27,7 +28,7 @@
       const response = await fetch("/api/submit", { method: "POST", body: formData });
 
       if (response.ok) {
-        alert("Form submitted successfully!");
+        alert("summitted!");
         e.target.reset();  // Reset the form after submission
       } else {
         alert("Form submission failed. Please try again.");

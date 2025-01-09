@@ -29,18 +29,24 @@ body {
   .text-content {
     flex: 1;
     text-align: left;
-  }
+    max-width: 50vw; /* Limit text content width to 50% of viewport */
+    min-width: 300px; /* Ensure it doesn't become too small */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
   
   /* Instagram username styling */
   .text-content h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #333;
   }
   
   /* Quote styling */
   .text-content p {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #666;
   }
   
