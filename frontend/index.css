@@ -50,28 +50,36 @@ button[type="submit"]:hover {
   background-color: #ffd2e1;
   transform: scale(1.2);
 }
-/* Modal styling: hidden by default */
+
+/* Modal styling */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: -100px; /* Position it 100px above the container */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: none; /* Hidden initially */
+  position: absolute; /* Place it relative to .container */
+  width: 80%; /* Adjust width */
+  max-width: 350px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fefefe;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  pointer-events: auto;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* Modal content */
-.modal-content {
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  max-width: 400px;
-  text-align: center;
-  border-radius: 8px;
+/* Animation to smoothly show the modal */
+@keyframes fadeInUp {
+  0% {
+    transform: translate(-50%, 10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
 }
+
+
